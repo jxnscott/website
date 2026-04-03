@@ -10,89 +10,122 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #9a9a9a;
+      --panel: #111;
+      --line: #2a2a2a;
+      --maxw: 760px;
+    }
+
     body {
       margin: 0;
-      padding: 1rem;
-      background-color: #000;
-      color: #fff;
+      padding: 2rem 1rem;
+      background-color: var(--bg);
+      color: var(--fg);
       font-family: 'Space Mono', monospace;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       text-align: center;
     }
 
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+    }
+
     h1 {
-      font-size: clamp(1.5rem, 5vw, 2.5rem);
-      margin-bottom: 1.5rem;
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0 0 1.5rem 0;
+      line-height: 1.1;
     }
 
-    .loader {
-      width: 80%;
-      max-width: 300px;
-      height: 8px;
-      background: #222;
-      border: 1px solid #444;
-      border-radius: 4px;
-      overflow: hidden;
+    .card {
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      text-align: left;
     }
 
-    .loader-fill {
-      width: 0%;
-      height: 100%;
-      background: #fff;
-      animation: load 7200s forwards; /* 2 hours */
+    p {
+      margin: 0 0 1rem 0;
+      line-height: 1.6;
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
     }
 
-    @keyframes load {
-      0% { width: 0%; }
-      100% { width: 100%; }
+    p:last-child {
+      margin-bottom: 0;
     }
 
-    .status {
-      margin-top: 0.75rem;
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
-      color: #888;
+    .section-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-transform: lowercase;
     }
 
-    .email {
+    .forthcoming {
       margin-top: 1.25rem;
-      font-size: clamp(0.85rem, 2.5vw, 1rem);
-      color: #fff;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
       display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
       align-items: center;
-      gap: 0.5rem;
     }
 
-    .email a {
-      color: #fff;
+    a {
+      color: var(--fg);
       text-decoration: none;
+      border-bottom: 1px solid transparent;
     }
 
-    .email a:hover {
-      text-decoration: underline;
-    }
-
-    .email svg {
-      fill: #fff;
+    a:hover {
+      border-bottom-color: var(--fg);
     }
   </style>
 </head>
 <body>
-  <h1>Jackson Scott</h1>
-  <div class="loader">
-    <div class="loader-fill"></div>
-  </div>
-  <div class="status">loading... site under construction</div>
-  <div class="email">
-    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 
-               2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 
-               8l8 5 8-5v10H4V8zm8 3L4 6h16l-8 5z"/>
-    </svg>
-    <a href="mailto:hello@jxnscott.com">hello@jxnscott.com</a>
-  </div>
+  <main class="wrap">
+    <h1>Jackson Scott</h1>
+
+    <section class="card">
+      <span class="section-label">about</span>
+      <p>
+        I am a research engineer working at the intersection of electric power systems,
+        machine learning, and optimization.
+      </p>
+      <p>
+        My current interests include foundation models for the electric grid, representation
+        design for topology-aware learning systems, and methods that remain useful under physical and
+        operational constraints.
+      </p>
+
+      <div class="forthcoming">
+        In progress: a short write-up on lessons learned from the 5th Workshop on Foundation Models of the
+        Electric Grid at Harvard SEAS in March 2026.
+      </div>
+    </section>
+
+    <div class="footer">
+      <a href="mailto:hello@jxnscott.com">
+        hello@jxnscott.com
+      </a>
+      <a href="https://github.com/jxnscott" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/jxnscott" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </main>
 </body>
 </html>
